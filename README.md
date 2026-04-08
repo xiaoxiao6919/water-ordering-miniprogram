@@ -95,4 +95,9 @@
 - 🏢 办公室桶装水订购
 - 🏠 社区饮用水配送
 - 其他需要在线订购配送的场景
-  页面图片展示👇：<img width="375" height="792" alt="image" src="https://github.com/user-attachments/assets/4b4a7a50-eba5-4c3a-ae88-407a9632337d" />
+  页面图片展示👇：
+  <img width="415" height="890" alt="image" src="https://github.com/user-attachments/assets/e6637da1-1c46-4c2f-95a8-7963a931f974" />
+  <img width="409" height="889" alt="image" src="https://github.com/user-attachments/assets/3f659fbe-b3ab-4699-a01e-473893a66812" />
+
+
+
