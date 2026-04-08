@@ -98,8 +98,8 @@
   页面图片展示👇：
 
   
-  <img width="415" height="890" alt="image" src="https://github.com/user-attachments/assets/e6637da1-1c46-4c2f-95a8-7963a931f974" />
-  <img width="409" height="889" alt="image" src="https://github.com/user-attachments/assets/3f659fbe-b3ab-4699-a01e-473893a66812" />
+<img width="415" height="890" alt="aa2eb2552373a90472595fe6fe6cab89" src="https://github.com/user-attachments/assets/3e45b603-ae3e-46d4-9494-58b32b90c3ca" />
+<img width="409" height="889" alt="image" src="https://github.com/user-attachments/assets/3f659fbe-b3ab-4699-a01e-473893a66812" />
 
 
 
