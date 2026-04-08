@@ -1,0 +1,150 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">订单管理</view>
+    <button class="share-btn" open-type="share">分享给其他管理员</button>
+
+    <!-- 今日统计 -->
+    <view class="today-stats">
+      <view class="today-title">今日统计</view>
+      <view class="stats">
+        <view class="stat-item">
+          <view class="stat-value">{{todayTotalOrders}}</view>
+          <view class="stat-label">今日订单</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-value pending">{{todayPendingOrders}}</view>
+          <view class="stat-label">待配送</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-value completed">{{todayCompletedOrders}}</view>
+          <view class="stat-label">已完成</view>
+        </view>
+        <view class="stat-item">
+          <view class="stat-value highlight">{{todayTotalWater}}</view>
+          <view class="stat-label">总数量</view>
+        </view>
+      </view>
+      <view class="date-display">统计日期：{{todayDate}}</view>
+    </view>
+
+    <!-- 历史查询 -->
+    <view class="history-section">
+      <view class="history-title">历史查询</view>
+      <picker mode="date" value="{{selectedDate}}" end="{{todayDate}}" bindchange="onDateChange">
+        <view class="date-picker">
+          <text class="picker-text">选择日期：{{selectedDate || '请选择'}}</text>
+        </view>
+      </picker>
+      <view wx:if="{{selectedDate}}" class="history-stats">
+        <view class="history-stat">订单数：{{historyTotalOrders}}</view>
+        <view class="history-stat">总数量：{{historyTotalWater}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="filter-bar">
+    <view 
+      class="filter-item {{filterStatus === '全部' ? 'active' : ''}}"
+      bindtap="onFilterChange"
+      data-status="全部"
+    >
+      全部
+    </view>
+    <view 
+      class="filter-item {{filterStatus === '待配送' ? 'active' : ''}}"
+      bindtap="onFilterChange"
+      data-status="待配送"
+    >
+      待配送
+    </view>
+    <view 
+      class="filter-item {{filterStatus === '已完成' ? 'active' : ''}}"
+      bindtap="onFilterChange"
+      data-status="已完成"
+    >
+      已完成
+    </view>
+  </view>
+
+  <view class="order-list">
+    <block wx:if="{{filteredOrders.length > 0}}">
+      <view 
+        class="order-card" 
+        wx:for="{{filteredOrders}}" 
+        wx:key="id"
+      >
+        <view class="order-header">
+          <view class="order-name">{{item.name}}</view>
+          <view class="order-status {{item.status === '已完成' ? 'completed' : ''}}">
+            {{item.status}}
+          </view>
+        </view>
+        
+        <view class="order-info">
+          <view class="info-row">
+            <text class="info-label">联系方式：</text>
+            <text class="info-value phone">{{item.phone}}</text>
+            <view class="phone-call" bindtap="onCallPhone" data-phone="{{item.phone}}">
+              📞
+            </view>
+          </view>
+          <view class="info-row">
+            <text class="info-label">学院：</text>
+            <text class="info-value">{{item.college}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">类型：</text>
+            <text class="info-value">{{item.productType}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">数量：</text>
+            <text class="info-value highlight">{{item.count}} {{item.productType === '桶装水' ? '桶' : '箱'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">付款：</text>
+            <text class="info-value">{{item.paymentType}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">配送时间：</text>
+            <text class="info-value">{{item.deliveryTime}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">配送地址：</text>
+            <text class="info-value">{{item.deliveryAddress}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">下单时间：</text>
+            <text class="info-value small">{{item.createTime}}</text>
+          </view>
+          <view class="info-row" wx:if="{{item.remark}}">
+            <text class="info-label">备注：</text>
+            <text class="info-value">{{item.remark}}</text>
+          </view>
+        </view>
+
+        <view class="order-actions">
+          <block wx:if="{{item.status === '待配送'}}">
+            <button 
+              class="action-btn btn-deliver" 
+              bindtap="onDeliver"
+              data-id="{{item.id}}"
+            >
+              配送
+            </button>
+          </block>
+          <button 
+            class="action-btn btn-delete" 
+            bindtap="onDelete"
+            data-id="{{item.id}}"
+          >
+            删除
+          </button>
+        </view>
+      </view>
+    </block>
+
+    <view wx:else class="empty">
+      <text class="empty-text">暂无订单</text>
+    </view>
+  </view>
+</view>

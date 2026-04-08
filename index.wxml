@@ -1,0 +1,123 @@
+<view class="container">
+  <view class="card">
+    <view class="title">饮用水订购</view>
+
+    <view class="form-item">
+      <view class="label">老师姓名</view>
+      <input
+        class="input"
+        placeholder="请输入老师姓名"
+        value="{{name}}"
+        bindinput="onNameInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label">联系方式</view>
+      <input
+        class="input"
+        placeholder="请输入11位手机号码"
+        value="{{phone}}"
+        bindinput="onPhoneInput"
+        type="number"
+        maxlength="11"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label">所属学院</view>
+      <input
+        class="input"
+        placeholder="请输入学院名称，例：计算机学院\组织"
+        value="{{college}}"
+        bindinput="onCollegeInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label">订购类型</view>
+      <view class="product-types">
+        <view
+          class="product-type {{productType === '桶装水' ? 'active' : ''}}"
+          bindtap="onProductTypeChange"
+          data-type="桶装水"
+        >
+          桶装水
+        </view>
+        <view
+          class="product-type {{productType === '箱装水' ? 'active' : ''}}"
+          bindtap="onProductTypeChange"
+          data-type="箱装水"
+        >
+          箱装水
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">订购数量</view>
+      <view class="counter">
+        <button class="counter-btn" bindtap="onDecrease">-</button>
+        <view class="counter-value">{{count}}</view>
+        <button class="counter-btn" bindtap="onIncrease">+</button>
+      </view>
+      <view class="unit-text">{{productType === '桶装水' ? '桶' : '箱'}}</view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">付款方式</view>
+      <view class="payment-types">
+        <view
+          class="payment-type {{paymentType === '现结' ? 'active' : ''}}"
+          bindtap="onPaymentTypeChange"
+          data-type="现结"
+        >
+          现结
+        </view>
+        <view
+          class="payment-type {{paymentType === '挂账' ? 'active' : ''}}"
+          bindtap="onPaymentTypeChange"
+          data-type="挂账"
+        >
+          挂账
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <view class="label">配送时间</view>
+      <input
+        class="input"
+        placeholder="请输入配送时间，例：今天下午3点"
+        value="{{deliveryTime}}"
+        bindinput="onDeliveryTimeInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label">配送地址</view>
+      <input
+        class="input"
+        placeholder="请输入配送地址，例：教学楼302室"
+        value="{{deliveryAddress}}"
+        bindinput="onDeliveryAddressInput"
+      />
+    </view>
+
+    <view class="form-item">
+      <view class="label">备注信息</view>
+      <textarea
+        class="textarea"
+        placeholder="请输入其他备注信息（选填）"
+        value="{{remark}}"
+        bindinput="onRemarkInput"
+      />
+    </view>
+
+    <button class="btn" bindtap="onSubmit">确认下单</button>
+  </view>
+
+  <view wx:if="{{success}}" class="success-tip">
+    <text>下单成功！</text>
+  </view>
+</view>

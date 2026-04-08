@@ -1,0 +1,29 @@
+# 微信小程序编译产物
+/dist
+
+# 编译配置
+/project.config.json
+/project.private.config.json
+
+# 依赖
+/node_modules
+
+# 日志
+*.log
+
+# 微信开发者工具相关
+/.idea
+/.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 隐藏文件
+.DS_Store
+.env.local
+.env.*.local
+
+# 图片占位符（可选忽略）
+images/*.txt
